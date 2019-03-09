@@ -2,7 +2,7 @@ const addItems = document.querySelector('.add-item');
 const itemList = document.querySelector('.plates');
 const deletItem = document.querySelector('.delete');
 const clearAll = document.querySelector('.clear');
-const items = JSON.parse(localStorage.getItem('items')) || [];
+let items = JSON.parse(localStorage.getItem('items')) || [];
 
 
 
@@ -43,11 +43,13 @@ function toggleDone(e){
 function removeDoneItems() {
     const newItems = items.filter(it => it.done  !== true);
     populateList(newItems, itemList);
+    items = newItems;
     localStorage.setItem('items', JSON.stringify(newItems));
 }
 
 function clearAllItems() {
     populateList([], itemList);
+    items = [];
     localStorage.removeItem('items');
 }
 
