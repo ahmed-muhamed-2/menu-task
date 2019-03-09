@@ -47,7 +47,8 @@ function removeDoneItems() {
 }
 
 function clearAllItems() {
-    
+    populateList([], itemList);
+    localStorage.removeItem('items');
 }
 
 addItems.addEventListener('submit', addItem);
